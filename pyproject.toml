@@ -7,7 +7,9 @@ authors = [
     { name = "Seif_Haytham", email = "seifeldinhaytham@gmail.com" }
 ]
 requires-python = ">=3.12"
-dependencies = []
+dependencies = [
+    "dvc>=3.67.1",
+]
 
 [project.scripts]
 titanic-ai-engineering = "titanic_ai_engineering:main"
