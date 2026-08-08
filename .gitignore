@@ -11,9 +11,10 @@ __pycache__/
 # Jupyter
 .ipynb_checkpoints/
 
-# ML artifacts - managed by DVC later
-data/
+# ML artifacts
 models/
+
+
 
 # IDE
 .vscode/
