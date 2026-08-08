@@ -1,2 +1,4 @@
+[core]
+    remote = origin
 ['remote "origin"']
-    url = https://dagshub.com/seifeldinhaytham/titanic-ai-engineering.git
+    url = https://dagshub.com/seifeldinhaytham/titanic-ai-engineering.dvc
