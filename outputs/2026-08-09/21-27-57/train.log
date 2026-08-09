@@ -1,0 +1,6 @@
+[2026-08-09 21:27:59,222][httpx][INFO] - HTTP Request: GET https://dagshub.com/api/v1/user "HTTP/1.1 200 OK"
+[2026-08-09 21:27:59,250][dagshub][INFO] - Accessing as seifeldinhaytham
+[2026-08-09 21:28:00,502][httpx][INFO] - HTTP Request: GET https://dagshub.com/api/v1/repos/seifeldinhaytham/titanic-ai-engineering "HTTP/1.1 200 OK"
+[2026-08-09 21:28:01,912][httpx][INFO] - HTTP Request: GET https://dagshub.com/api/v1/user "HTTP/1.1 200 OK"
+[2026-08-09 21:28:01,917][dagshub][INFO] - Initialized MLflow to track repo "seifeldinhaytham/titanic-ai-engineering"
+[2026-08-09 21:28:01,920][dagshub][INFO] - Repository seifeldinhaytham/titanic-ai-engineering initialized!

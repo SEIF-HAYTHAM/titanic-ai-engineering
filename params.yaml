@@ -1,0 +1,10 @@
+preprocessing:
+  age_strategy: median
+  fare_strategy: median
+  drop_missing_embarked: false
+
+model:
+  n_estimators: 200
+  max_depth: 5
+  min_samples_split: 2
+  random_state: 42

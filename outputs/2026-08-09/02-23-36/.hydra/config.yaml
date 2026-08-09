@@ -1,0 +1,4 @@
+preprocessing:
+  age_strategy: median
+  fare_strategy: median
+  drop_missing_embarked: false
