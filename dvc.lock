@@ -1,0 +1,73 @@
+schema: '2.0'
+stages:
+  preprocess:
+    cmd: uv run python src/titanic_ai_engineering/preprocess.py
+    deps:
+    - path: data/raw/titanic.csv
+      hash: md5
+      md5: 2309cc5f04782ed9bb6016d9f4e381cf
+      size: 61194
+    - path: src/titanic_ai_engineering/preprocess.py
+      hash: md5
+      md5: 26a37047411779e00904d577a0ec650e
+      size: 2348
+    params:
+      configs/config.yaml:
+        preprocessing.age_strategy: median
+        preprocessing.drop_missing_embarked: false
+        preprocessing.fare_strategy: median
+    outs:
+    - path: data/processed/titanic_processed.csv
+      hash: md5
+      md5: 6a4aefb4d40ab7d7f15b87b4a660196a
+      size: 26869
+  train:
+    cmd: uv run python src/titanic_ai_engineering/train.py
+    deps:
+    - path: data/processed/titanic_processed.csv
+      hash: md5
+      md5: 6a4aefb4d40ab7d7f15b87b4a660196a
+      size: 26869
+    - path: src/titanic_ai_engineering/train.py
+      hash: md5
+      md5: 6b5b4f201bcbb94e7c22e5fa61e93ff8
+      size: 5441
+    params:
+      configs/config.yaml:
+        model.max_depth: 5
+        model.min_samples_split: 2
+        model.n_estimators: 100
+        model.random_state: 42
+    outs:
+    - path: data/processed/test.csv
+      hash: md5
+      md5: c6aa471aa3a01e8cb11078d49d3345a7
+      size: 5443
+    - path: data/processed/train.csv
+      hash: md5
+      md5: 34807fe11103cde871370baaa58c3e79
+      size: 21517
+    - path: models/titanic_model.pkl
+      hash: md5
+      md5: 54c19fd7c7f55390ebea3e7d997632bf
+      size: 410265
+  evaluate:
+    cmd: uv run python src/titanic_ai_engineering/evaluate.py
+    deps:
+    - path: data/processed/test.csv
+      hash: md5
+      md5: c6aa471aa3a01e8cb11078d49d3345a7
+      size: 5443
+    - path: models/titanic_model.pkl
+      hash: md5
+      md5: 54c19fd7c7f55390ebea3e7d997632bf
+      size: 410265
+    - path: src/titanic_ai_engineering/evaluate.py
+      hash: md5
+      md5: 0080d8f27d3863cc7d47c9c86851dea7
+      size: 4407
+    outs:
+    - path: metrics/metrics.json
+      hash: md5
+      md5: 0ff2151bca1c11ee13afbb725ee67beb
+      size: 136

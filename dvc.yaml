@@ -1,0 +1,49 @@
+stages:
+
+  preprocess:
+    cmd: uv run python src/titanic_ai_engineering/preprocess.py
+
+    deps:
+      - data/raw/titanic.csv
+      - src/titanic_ai_engineering/preprocess.py
+
+    params:
+      - configs/config.yaml:
+          - preprocessing.age_strategy
+          - preprocessing.fare_strategy
+          - preprocessing.drop_missing_embarked
+
+    outs:
+      - data/processed/titanic_processed.csv
+
+
+  train:
+    cmd: uv run python src/titanic_ai_engineering/train.py
+
+    deps:
+      - data/processed/titanic_processed.csv
+      - src/titanic_ai_engineering/train.py
+
+    params:
+      - configs/config.yaml:
+          - model.n_estimators
+          - model.max_depth
+          - model.min_samples_split
+          - model.random_state
+
+    outs:
+      - data/processed/train.csv
+      - data/processed/test.csv
+      - models/titanic_model.pkl
+
+
+  evaluate:
+    cmd: uv run python src/titanic_ai_engineering/evaluate.py
+
+    deps:
+      - data/processed/test.csv
+      - models/titanic_model.pkl
+      - src/titanic_ai_engineering/evaluate.py
+
+    metrics:
+      - metrics/metrics.json
